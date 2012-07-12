@@ -1,0 +1,76 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="AppTest.player"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480">
+
+    <!-- transition -->
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeIn"/>
+            </toolkit:NavigationInTransition.Backward>
+
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+    <Grid Height="Auto" Name="grid1" Width="Auto">
+        <Grid.Background>
+            <ImageBrush ImageSource="background.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72" />
+            <RowDefinition Height="364" />
+            <RowDefinition Height="332*" />
+        </Grid.RowDefinitions>
+        <MediaElement Height="364" HorizontalAlignment="Left" Name="MediaPlayer" VerticalAlignment="Top" Width="480" Grid.Row="1" />
+        <TextBlock Height="52"
+                   HorizontalAlignment="Left"
+                   Margin="9,12,0,0" 
+                   Name="textBlock1"
+                   Text="TextBlock" 
+                   VerticalAlignment="Top" 
+                   Width="441" FontSize="28">
+        <!--TextBlock.RenderTransform x:Name="rotate" /-->
+        </TextBlock>
+        <Button Content=">" Grid.Row="2" Height="70" HorizontalAlignment="Left" Margin="16,66,0,0" Name="buttonPlay" VerticalAlignment="Top" Width="82" Click="buttonPlay_Click" />
+        <Button Content="||" Grid.Row="2" Height="70" HorizontalAlignment="Left" Margin="98,66,0,0" Name="buttonPause" VerticalAlignment="Top" Width="84" Click="buttonPause_Click" />
+        <Button Content="O" Grid.Row="2" Height="70" HorizontalAlignment="Left" Margin="184,66,0,0" Name="button1" VerticalAlignment="Top" Width="87" Click="button1_Click" />
+        <TextBlock Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="25,20,0,0" Name="StatusBar" Text="TextBlock" VerticalAlignment="Top" Width="255" />
+    </Grid>
+</phone:PhoneApplicationPage>

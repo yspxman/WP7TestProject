@@ -1,0 +1,157 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="AppTest.YWeather.YWeatherMain"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False"
+    xmlns:local="clr-namespace:AppTest.YWeather.Engine;assembly=AppTest"
+    toolkit:TiltEffect.IsTiltEnabled="False">
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+
+
+    <phone:PhoneApplicationPage.Resources>
+
+        <Style x:Key="BTGridStyle"
+               TargetType="Button">
+
+            <Setter Property="Height" Value="200" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="#629B3333" />
+
+        </Style>
+
+        <DataTemplate x:Name="BTGridTemplate">
+            <Button Style="{StaticResource BTGridStyle}">
+                <TextBlock Text="{Binding condition_string}"  TextWrapping="Wrap" 
+                           Style="{StaticResource PhoneTextNormalStyle}"/>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Name="ListBoxTemplate">
+            <StackPanel Width="480" Margin="0,0,0,10" Orientation="Horizontal" Background="#B5334F6C" Opacity="1">
+
+                <StackPanel  Width="250" IsHitTestVisible="True" Opacity="1">
+                    <TextBlock Text="{Binding Date_string}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Text="{Binding condition_string}" TextWrapping="Wrap"    Style="{StaticResource PhoneTextLargeStyle}" />
+                    <TextBlock Text="{Binding Temp_string}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                </StackPanel>
+                <Image x:Name="ImageWeatherIcon" Source="{Binding WeatherIconPath}"  Opacity="1" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" />
+            </StackPanel>
+
+        </DataTemplate>
+
+        <DataTemplate x:Name="ItemHeaderTemplate">
+            <Grid x:Name="grid1" ShowGridLines="True" Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="{Binding CityName}" FontSize="40"   FontFamily="Microsoft MHei"
+                                   Margin="0,0,0,0" FontStretch="Normal" FontWeight="Thin"
+                                           Grid.Column="0" Grid.Row="0"/>
+                <TextBlock Text="{Binding Current_Temp}" FontSize="40"    FontFamily="Microsoft MHei"
+                                   Margin="0,0,0,0" FontStretch="Normal" FontWeight="Thin"
+                                       HorizontalAlignment="Right"   Grid.Column="1" Grid.Row="0"/>
+
+                <TextBlock Text="{Binding Current_date}" FontSize="20"   FontFamily="Microsoft MHei"
+                                   Margin="0,0,0,0" FontStretch="Normal" FontWeight="Thin"
+                                           Grid.Column="0" Grid.Row="1"/>
+
+                <TextBlock Text="{Binding Update_time}" FontSize="20"     FontFamily="Microsoft MHei"
+                                   Margin="0,0,0,0" FontStretch="Normal" FontWeight="Thin"
+                                       HorizontalAlignment="Right"  Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+
+        </DataTemplate>
+
+
+        <local:WeatherIconConverter x:Name="WeatherIconConverter"/>
+
+    </phone:PhoneApplicationPage.Resources>
+    
+    
+    <Grid x:Name="LayoutRoot">
+
+  
+        
+        <controls:Panorama Title="Y Weather" 
+                            Name="PanoramaCtrl"
+                           Loaded="Panorama_Loaded" 
+                           SelectionChanged="Panorama_SelectionChanged" Unloaded="Panorama_Unloaded" FontStretch="Expanded">
+            <controls:Panorama.Background>
+                <ImageBrush ImageSource="/AppTest;component/YWeather/Resources/background.jpg" Stretch="UniformToFill" />
+            </controls:Panorama.Background>
+            
+            
+            <controls:Panorama.TitleTemplate>
+                <DataTemplate>
+                    <TextBlock Text="辰辰的天气预报" FontSize="80" FontFamily="Microsoft MHei" 
+                               FontWeight="Normal" Margin="15,80,0,0" FontStretch="Normal" 
+                               FontStyle="Italic" />
+                </DataTemplate>
+            </controls:Panorama.TitleTemplate>
+
+            
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="ss">
+
+                <ListBox >
+                    
+                    <ListBoxItem >the first listbox item  </ListBoxItem>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <Button Style="{StaticResource BTGridStyle}">
+                            Beijing
+                        </Button>
+                        <Button Style="{StaticResource BTGridStyle}">
+                            Dalian
+                        </Button>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource BTGridStyle}">
+                            Beijing
+                        </Button>
+                        <Button Style="{StaticResource BTGridStyle}">
+                            Dalian
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource BTGridStyle}">
+                            Beijing
+                        </Button>
+                        <Button Style="{StaticResource BTGridStyle}">
+                            Dalian
+                        </Button>
+                    </StackPanel>
+                </ListBox>
+                
+              
+            </controls:PanoramaItem>
+            
+        </controls:Panorama>
+    </Grid>
+
+    <!--Panorama-based applications should not show an ApplicationBar-->
+
+    
+</phone:PhoneApplicationPage>
