@@ -48,6 +48,7 @@ namespace AppTest.YWeather.Engine
                 UpdateWeather(c.Key);
             }
 
+            // something changed!
             
             //UpdateWeather();
         }
