@@ -40,17 +40,20 @@ namespace AppTest.YWeather.Engine
         public void initialize()
         {
             if (_dataModel == null)
+            {
                 _dataModel = new DataModel();
+            }
 
+           // UpdateAll();
+        }
+
+        public void UpdateAll()
+        {
             // dictionary 的遍历
-            foreach(KeyValuePair<string, WeatherDataModel> c in _dataModel.GetWeatherDictionary())
+            foreach (KeyValuePair<string, WeatherDataModel> c in _dataModel.GetWeatherDictionary())
             {
                 UpdateWeather(c.Key);
             }
-
-            // something changed!
-            
-            //UpdateWeather();
         }
 
         public void UpdateWeather(string cityId)
@@ -60,14 +63,12 @@ namespace AppTest.YWeather.Engine
             WebClient wc = new WebClient();
             wc.Encoding = new GB2312.GB2312Encoding();
             wc.DownloadStringAsync(new Uri(UpdateURI));
-            wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+            wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);      
         }
 
-        void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        private void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            //int a;
-            //string ss;
-            
+            //e.UserState.ToString();
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);
@@ -75,23 +76,26 @@ namespace AppTest.YWeather.Engine
             }
             // gb2312 如何转换成UTF8
             string s = e.Result.ToString();
+            ParseXml(s);
+ 
+        }
+
+        private void ParseXml(string s)
+        {
             XmlReader xmlReader = XmlReader.Create(new StringReader(s));
 
             // XmlDocument 在silverlight中不支持。只能试试XDocument
             XDocument xdoc = XDocument.Parse(s);
-            
-               
+
             var cityinfo = from c in xdoc.Descendants("forecast_information")
-                    select new
-                    {
-                       date = c.Element("forecast_date").Attribute("data").Value,
-                       cityId = c.Element("postal_code").Attribute("data").Value,
-                    };
+                           select new
+                           {
+                               date = c.Element("forecast_date").Attribute("data").Value,
+                               cityId = c.Element("postal_code").Attribute("data").Value,
+                           };
 
             WeatherDataModel cityDM;
             _dataModel.GetWeatherDictionary().TryGetValue(cityinfo.FirstOrDefault().cityId, out cityDM);
-
-
 
             cityDM.cityinfo.Current_date = cityinfo.FirstOrDefault().date;
 
@@ -111,12 +115,12 @@ namespace AppTest.YWeather.Engine
 
             }
             catch
-            { 
+            {
             }
-    
 
-            var f = from c in  xdoc.Descendants("forecast_conditions")
-                    select new 
+
+            var f = from c in xdoc.Descendants("forecast_conditions")
+                    select new
                     {
                         dayOfWeek = c.Element("day_of_week").Attribute("data").Value,
                         lowTemp = c.Element("low").Attribute("data").Value,
@@ -124,18 +128,21 @@ namespace AppTest.YWeather.Engine
                         condition_string = c.Element("condition").Attribute("data").Value,
                     };
 
-            
-            foreach(var item in f)
+
+            foreach (var item in f)
             {
                 cityDM.DC_WeatherByDay.Add
                     (
-                    new WeatherForecastDataModel() { Date_string = item.dayOfWeek, 
-                        condition_string = item.condition_string, temp_low = item.lowTemp, 
-                        temp_high = item.highTemp }
+                    new WeatherForecastDataModel()
+                    {
+                        Date_string = item.dayOfWeek,
+                        condition_string = item.condition_string,
+                        temp_low = item.lowTemp,
+                        temp_high = item.highTemp
+                    }
                 );
             }
         }
-
 
         void fun1(XmlReader xmlReader)
         {

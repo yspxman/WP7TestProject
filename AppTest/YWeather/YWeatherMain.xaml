@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -103,7 +103,7 @@
             
             <controls:Panorama.TitleTemplate>
                 <DataTemplate>
-                    <TextBlock Text="辰辰的天气预报" FontSize="80" FontFamily="Microsoft MHei" 
+                    <TextBlock Text="YWeather天气预报" FontSize="80" FontFamily="Microsoft MHei" 
                                FontWeight="Normal" Margin="15,80,0,0" FontStretch="Normal" 
                                FontStyle="Italic" />
                 </DataTemplate>
@@ -153,5 +153,17 @@
 
     <!--Panorama-based applications should not show an ApplicationBar-->
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Update" Click="ApplicationBarIconButton_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
     
+    
+
 </phone:PhoneApplicationPage>

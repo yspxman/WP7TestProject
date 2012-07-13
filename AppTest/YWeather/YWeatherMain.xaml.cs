@@ -74,7 +74,13 @@ namespace AppTest.YWeather
 
         private void Panorama_Unloaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Panorama_Unloaded");
+           // MessageBox.Show("Panorama_Unloaded");
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+           // MessageBox.Show("Update!");
+            _engine.UpdateAll();
         }
     }
 }

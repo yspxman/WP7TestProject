@@ -179,8 +179,4 @@ namespace AppTest.YWeather.Engine
         }
 
     }
-    
-    
-    
-
 }
