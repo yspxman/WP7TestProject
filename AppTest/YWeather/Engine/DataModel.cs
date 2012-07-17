@@ -118,6 +118,8 @@ namespace AppTest.YWeather.Engine
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
+                var delegatelist = PropertyChanged.GetInvocationList();
             }
         }
     }
