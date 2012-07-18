@@ -36,6 +36,7 @@ namespace AppTest
         {
             InitializeComponent();
             textBox1.Text = addr;
+
          
         }
         private void textBlock_addText(string s)
@@ -74,6 +75,8 @@ namespace AppTest
             if (MyEevent != null)
             {
                 MyEventArgs arg = new MyEventArgs(36);
+                //MyEevent.BeginInvoke(null, null, null, null);
+                //compact .Net framework does not support BeginInvoke
                 MyEevent(this, arg);
             }
             
