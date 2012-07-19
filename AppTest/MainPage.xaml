@@ -62,7 +62,7 @@
             <Button  Height="72" HorizontalAlignment="Left" Margin="87,131,0,0" Name="button3" VerticalAlignment="Top" Width="297" Click="button3_Click" >
               
                 <TextBlock > 
-                        Web <Run FontStyle="Italic">Service</Run>
+                        Async <Run FontStyle="Italic">Delegate Test</Run>
                 </TextBlock>
 
             </Button>

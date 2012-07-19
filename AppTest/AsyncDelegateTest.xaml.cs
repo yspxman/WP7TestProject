@@ -69,7 +69,7 @@ namespace AppTest
 
             // 注册事件，下面的两种方法是一样的
             MyEevent += this.WebService_MyEevent;
-            MyEevent += new MyEventHandler(WebService_MyEevent);
+            //MyEevent += new MyEventHandler(WebService_MyEevent);
 
             // something happened
             if (MyEevent != null)
@@ -98,7 +98,7 @@ namespace AppTest
             
         }
 
-        #region delegate 异步调用测试，失败！compact framework不支持 所以 AsyncOperation也没法用
+        #region delegate 异步调用测试，失败！compact framework不支持Delegate的BeginInvoke 所以 AsyncOperation也没法用
 
         public delegate string MyDelegate(string s1, string s2);
 
@@ -166,7 +166,33 @@ namespace AppTest
             //InvokeSheepCountFuncAsync1();
             InvokeSheepCountFuncAsync2();
             //InvokeSheepCountFuncAsync3();
+
+            // 注册事件
+            
+
+            //FireEvent();
         }
+
+        public void FireEvent()
+        {
+            if (SheepCountEevent != null)
+            {
+                Delegate[] delArray = SheepCountEevent.GetInvocationList();
+                foreach (var v in delArray)
+                {
+                    try
+                    {
+                        SheepCountEventHandler handler = (SheepCountEventHandler)v;
+                        handler(this, new SheepCountEventArgs(8));
+                    }
+                    catch
+                    { 
+                        // catch exceptions
+                    }
+                }              
+            }
+        }
+
 
         #endregion
 

@@ -34,7 +34,7 @@ namespace AppTest
         private void button3_Click(object sender, RoutedEventArgs e)
         {
 
-            NavigationService.Navigate(new Uri("/WebService.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/AsyncDelegateTest.xaml", UriKind.Relative));
         }
 
         private void button4_Click(object sender, RoutedEventArgs e)

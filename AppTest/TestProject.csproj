@@ -113,8 +113,8 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="WebService.xaml.cs">
-      <DependentUpon>WebService.xaml</DependentUpon>
+    <Compile Include="AsyncDelegateTest.xaml.cs">
+      <DependentUpon>AsyncDelegateTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="YWeather\Engine\DataModel.cs" />
     <Compile Include="YWeather\Engine\WeatherCondition.cs" />
@@ -185,7 +185,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WebService.xaml">
+    <Page Include="AsyncDelegateTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
