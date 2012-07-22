@@ -37,7 +37,7 @@ namespace AppTest
             InitializeComponent();
             textBox1.Text = addr;
 
-         
+ 
         }
         private void textBlock_addText(string s)
         {

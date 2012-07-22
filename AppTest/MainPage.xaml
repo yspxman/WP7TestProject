@@ -53,26 +53,34 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Panorama MainView" Height="72" HorizontalAlignment="Left" Margin="87,6,0,0" Name="button1" VerticalAlignment="Top" Width="297" Click="button1_Click">
-                <Button.Background>
-                    <ImageBrush />
-                </Button.Background>
-            </Button>
-            <Button Content="Pivot" Height="72" HorizontalAlignment="Left" Margin="87,70,0,0" Name="button2" VerticalAlignment="Top" Width="297" Click="button2_Click" />
-            <Button  Height="72" HorizontalAlignment="Left" Margin="87,131,0,0" Name="button3" VerticalAlignment="Top" Width="297" Click="button3_Click" >
-              
-                <TextBlock > 
-                        Async <Run FontStyle="Italic">Delegate Test</Run>
-                </TextBlock>
+            
+            <ListBox>
+                <Button Content="Panorama MainView" Height="72" HorizontalAlignment="Center"
+                         Name="button1" VerticalAlignment="Top" Width="297" Click="button1_Click">
+                    <Button.Background>
+                        <ImageBrush />
+                    </Button.Background>
+                </Button>
+                <Button Content="Pivot" Height="72" HorizontalAlignment="Center" 
+                         Name="button2" VerticalAlignment="Top" Width="297" Click="button2_Click" />
+                <Button  Height="72" HorizontalAlignment="Center" 
+                          Name="button3" VerticalAlignment="Top" Width="297" Click="button3_Click" >
 
-            </Button>
-            <Button Content="Isolated Storage" Height="72" HorizontalAlignment="Left" Margin="87,189,0,0" Name="button4" VerticalAlignment="Top" Width="297" Click="button4_Click" />
-            <Button Content="Puzzle Game" Height="72" HorizontalAlignment="Left" Margin="87,244,0,0" Name="BtnPuzzle" VerticalAlignment="Top" Width="297" Click="BtnPuzzle_Click" />
-            <Button Content="DB Test" Height="72" HorizontalAlignment="Left" Margin="87,305,0,0" Name="button5" VerticalAlignment="Top" Width="297" Click="button5_Click" />
-            <Button Content="Dependency Property" Height="72" HorizontalAlignment="Left" Margin="12,370,0,0" Name="button6" VerticalAlignment="Top" Width="444" Click="button6_Click" />
-            <Button Content="Animation" Height="72" HorizontalAlignment="Left" Margin="16,430,0,0" Name="button7" VerticalAlignment="Top" Width="444" Click="button7_Click" />
-            <Button Content="Y Weather" Height="69" HorizontalAlignment="Left" Margin="86,489,0,0" Name="btn_weather" VerticalAlignment="Top" Width="297" Click="btn_weather_Click" />
-            <Button Content="Map" Height="69" HorizontalAlignment="Left" Margin="87,551,0,0" Name="button8" VerticalAlignment="Top" Width="297" Click="button8_Click" />
+                    <TextBlock > 
+                        Async <Run FontStyle="Italic">Delegate Test</Run>
+                    </TextBlock>
+
+                </Button>
+                <Button Content="Isolated Storage" Height="72" HorizontalAlignment="Center"  Name="button4" VerticalAlignment="Top" Width="297" Click="button4_Click" />
+                <Button Content="Puzzle Game" Height="72" HorizontalAlignment="Center"  Name="BtnPuzzle" VerticalAlignment="Top" Width="297" Click="BtnPuzzle_Click" />
+                <Button Content="DB Test" Height="72" HorizontalAlignment="Center"  Name="button5" VerticalAlignment="Top" Width="297" Click="button5_Click" />
+                <Button Content="Dependency Property" Height="72" HorizontalAlignment="Center"  Name="button6" VerticalAlignment="Top" Width="444" Click="button6_Click" />
+                <Button Content="Animation" Height="72" HorizontalAlignment="Center"  Name="button7" VerticalAlignment="Top"  Click="button7_Click" />
+                <Button Content="Y Weather" Height="69" HorizontalAlignment="Center"  Name="btn_weather" VerticalAlignment="Top" Width="297" Click="btn_weather_Click" />
+                <Button Content="Map" Height="69" HorizontalAlignment="Center"  Name="button8" VerticalAlignment="Top" Width="297" Click="button8_Click" />
+                <Button Content="SandBox"   Name="sandbox"  Click="sandbox_Click" />
+
+            </ListBox>
         </Grid>
         <!--Grid.Background>
             <ImageBrush ImageSource="background.jpg" />

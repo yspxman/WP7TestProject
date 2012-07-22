@@ -72,5 +72,10 @@ namespace AppTest
             NavigationService.Navigate(new Uri("/Map/MapPage.xaml", UriKind.Relative));
         }
 
+        private void sandbox_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Sandbox.xaml", UriKind.Relative));
+        }
+
     }
 }
