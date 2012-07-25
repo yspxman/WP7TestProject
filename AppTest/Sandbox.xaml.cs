@@ -22,12 +22,36 @@ namespace AppTest
         public Sandbox()
         {
             InitializeComponent();
+
             InterlockedTest();
             MultiThreadTest();
 
+            
+            DataContext = this;
+           // RelayCommand s 
+        }
+
+        /// <summary>
+        /// 控件的command属性需要和Icommand的子类绑定
+        /// </summary>
+        private ICommand _testCommand;
+        public ICommand TestCommand
+        {
+            get
+            {
+                return _testCommand = new RelayCommand(TestMethod);//或者执行使用delegate方式写方法代码，不用传方法名
+            }
+        }
+
+        public void TestMethod()
+        {
+            MessageBox.Show("Msg from Command Binding");
         }
 
 
+
+
+        #region 多线程安全类 interlocked 类测试
         void MultiThreadTest()
         {
             for (int i = 0; i < 20; i++)
@@ -98,7 +122,32 @@ namespace AppTest
             }
             s1.Clear();
             this.textBlock1.Text += s1.AppendFormat("Interlocked increment,time is :{0} ms \t\n", sw.ElapsedMilliseconds).ToString();
-                 
+
+        }
+        #endregion
+    }
+
+
+    public class RelayCommand : ICommand
+    {
+        private Action _handler;
+
+        //Action是一个委托方法，所有的放到都可以传递进来，在Execute中执行。
+        public RelayCommand(Action handler)
+        {
+            this._handler = handler;
+        }
+        //如果返回false，绑定的控件就会呈现不可使用的效果
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void Execute(object parameter)
+        {
+            _handler();
         }
     }
 }

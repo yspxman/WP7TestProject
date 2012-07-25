@@ -29,6 +29,8 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock  HorizontalAlignment="Left"  Name="textBlock1" Text="" VerticalAlignment="Top"  />
+            <Button Content="Button" Height="72" HorizontalAlignment="Left" Margin="97,61,0,0" Name="button1" VerticalAlignment="Top" Width="160" 
+                    Command="{Binding TestCommand}"/>
         </Grid>
     </Grid>
  
