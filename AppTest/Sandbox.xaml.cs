@@ -22,14 +22,13 @@ namespace AppTest
         public Sandbox()
         {
             InitializeComponent();
-
-            InterlockedTest();
-            MultiThreadTest();
-
-            
-            DataContext = this;
-           // RelayCommand s 
+            InterLockedTest interlockedTest = new InterLockedTest();
+            interlockedTest.InterlockedTest(this);
+            interlockedTest.MultiThreadTest(this);
+ 
+            DataContext = this;           
         }
+        
 
         /// <summary>
         /// 控件的command属性需要和Icommand的子类绑定
@@ -39,7 +38,8 @@ namespace AppTest
         {
             get
             {
-                return _testCommand = new RelayCommand(TestMethod);//或者执行使用delegate方式写方法代码，不用传方法名
+                //或者执行使用delegate方式写方法代码，不用传方法名
+                return _testCommand = new RelayCommand(TestMethod);
             }
         }
 
@@ -47,87 +47,10 @@ namespace AppTest
         {
             MessageBox.Show("Msg from Command Binding");
         }
-
-
-
-
-        #region 多线程安全类 interlocked 类测试
-        void MultiThreadTest()
-        {
-            for (int i = 0; i < 20; i++)
-            {
-                Thread testThread = new Thread(AddFunc);
-                testThread.Start(this);
-            }
-        }
-
-        public static int num1 = 1;
-        public static int num2 = 99;
-        public static int num3 = 0;
-        public static void AddFunc(Object o)
-        { 
-            Sandbox s = (Sandbox)o;
-            int res;
-            //Interlocked.Increment(ref num);
-            //res = num;
-            //Interlocked.
-            Thread.Sleep(1000);
-            // 
-            num3 = num1;
-            num1 = num2;
-            num2 = num3;
-
-            num3 = num1;
-            num1 = num2;
-            num2 = num3;
-
-
-            res = num1;
-            StringBuilder s1 = new StringBuilder();
-
-            // cannot access UI resources directly.
-            Deployment.Current.Dispatcher.BeginInvoke(() => 
-            {
-            s.textBlock1.Text += s1.AppendFormat("num1 is :{0} \t\n", res).ToString();
-            });
-            
-            
-        }
-        void InterlockedTest()
-        {
-
-            int x = 0;
-            // 迭代次数为500万
-            const int iterationNumber = 5000000;
-            // 不采用锁的情况
-            // StartNew方法 对新的 Stopwatch 实例进行初始化，将运行时间属性设置为零，然后开始测量运行时间。
-            Stopwatch sw = Stopwatch.StartNew();
-            for (int i = 0; i < iterationNumber; i++)
-            {
-                x++;
-            }
-
-            StringBuilder s1 = new StringBuilder();
-            this.textBlock1.Text += s1.AppendFormat("Common increment,time is :{0} ms \t\n", sw.ElapsedMilliseconds).ToString();
-
-
-            sw.Reset();
-            sw.Start();
-            x = 0;
-            // 使用锁的情况, Interlocked提供多种线程安全的常用函数，如加减，交换，比较并交换等。
-            // 这些操作都是原子操作 atomic operation
-            for (int i = 0; i < iterationNumber; i++)
-            {
-                Interlocked.Increment(ref x);
-            }
-            s1.Clear();
-            this.textBlock1.Text += s1.AppendFormat("Interlocked increment,time is :{0} ms \t\n", sw.ElapsedMilliseconds).ToString();
-
-        }
-        #endregion
     }
 
 
+    #region ICommand Test
     public class RelayCommand : ICommand
     {
         private Action _handler;
@@ -150,4 +73,88 @@ namespace AppTest
             _handler();
         }
     }
+
+    #endregion
+
+    #region 多线程安全类 interlocked 类测试
+    public class InterLockedTest
+    {
+        
+       public void MultiThreadTest(Sandbox sb)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Thread testThread = new Thread(ThreadAddFunc);
+                testThread.Start(sb);
+            }
+        }
+
+        public static int num1 = 1;
+        public static int num2 = 99;
+        public static int num3 = 0;
+        public static void ThreadAddFunc(Object o)
+        {
+            Sandbox s = (Sandbox)o;
+            int res;
+            //Interlocked.Increment(ref num);
+            //res = num;
+            //Interlocked.
+            Thread.Sleep(1000);
+            // 
+            num3 = num1;
+            num1 = num2;
+            num2 = num3;
+
+            num3 = num1;
+            num1 = num2;
+            num2 = num3;
+
+
+            res = num1;
+            StringBuilder s1 = new StringBuilder();
+
+            // cannot access UI resources directly.
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                s.textBlock1.Text += s1.AppendFormat("num1 is :{0} \t\n", res).ToString();
+            });
+
+
+        }
+
+      public  void InterlockedTest(Sandbox sb)
+        {
+
+            int x = 0;
+            // 迭代次数为500万
+            const int iterationNumber = 5000000;
+            // 不采用锁的情况
+            // StartNew方法 对新的 Stopwatch 实例进行初始化，将运行时间属性设置为零，然后开始测量运行时间。
+            Stopwatch sw = Stopwatch.StartNew();
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                x++;
+            }
+
+            StringBuilder s1 = new StringBuilder();
+            sb.textBlock1.Text += s1.AppendFormat("Common increment,time is :{0} ms \t\n", sw.ElapsedMilliseconds).ToString();
+
+
+            sw.Reset();
+            sw.Start();
+            x = 0;
+            // 使用锁的情况, Interlocked提供多种线程安全的常用函数，如加减，交换，比较并交换等。
+            // 这些操作都是原子操作 atomic operation
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                Interlocked.Increment(ref x);
+            }
+            s1.Clear();
+            sb.textBlock1.Text += s1.AppendFormat("Interlocked increment,time is :{0} ms \t\n", sw.ElapsedMilliseconds).ToString();
+
+        }
+       
+    }
+
+     #endregion
 }
