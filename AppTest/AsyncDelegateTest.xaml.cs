@@ -338,13 +338,11 @@ namespace AppTest
 
         #endregion
 
-        ////////////////////////////////
-        ////3. ThreadPool
-        ///////////////
 
         #region 3. ThreadPool
-
-        // 测试函数
+        /// <summary>
+        /// 3. ThreadPool
+        /// </summary>
         public void InvokeSheepCountFuncAsync3()
         {
             if (SheepCountEevent == null)
