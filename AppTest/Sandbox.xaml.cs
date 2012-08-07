@@ -26,7 +26,13 @@ namespace AppTest
             interlockedTest.InterlockedTest(this);
             interlockedTest.MultiThreadTest(this);
  
-            DataContext = this;           
+            DataContext = this;
+
+
+            this.textBlock1.Text += AppDomain.CurrentDomain.FriendlyName;
+
+            //WP 或者说silverlight不支持创建新的AppDomain, AppDomain.CreateDomain
+            //AppDomain.
         }
         
 
