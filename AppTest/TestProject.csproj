@@ -51,7 +51,7 @@
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="system.data.linq" />
     <Reference Include="System.Device" />
@@ -207,6 +207,8 @@
     <EmbeddedResource Include="YWeather\GB2312\gb2312.bin" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\Microsoft.Phone.Controls.Toolkit.dll" />
+    <Content Include="lib\PhoneCore.Framework.dll" />
     <Content Include="Map\images\PushpinBicycle.png" />
     <Content Include="Map\images\PushpinCar.png" />
     <Content Include="Map\images\PushpinDrink.png" />
