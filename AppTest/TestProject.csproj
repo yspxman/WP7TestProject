@@ -123,9 +123,6 @@
     <Compile Include="YWeather\Engine\WeatherCondition.cs" />
     <Compile Include="YWeather\Engine\WeatherEngine.cs" />
     <Compile Include="YWeather\GB2312\GB2312Encoding.cs" />
-    <Compile Include="YWeather\YWeatherMain.xaml.cs">
-      <DependentUpon>YWeatherMain.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -193,10 +190,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AsyncDelegateTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="YWeather\YWeatherMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

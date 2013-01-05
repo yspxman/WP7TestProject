@@ -83,7 +83,7 @@
         </DataTemplate>
 
 
-        <local:WeatherIconConverter x:Name="WeatherIconConverter"/>
+        <!--local:WeatherIconConverter x:Name="WeatherIconConverter"/-->
 
     </phone:PhoneApplicationPage.Resources>
     

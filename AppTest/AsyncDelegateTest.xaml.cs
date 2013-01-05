@@ -120,7 +120,7 @@ namespace AppTest
 #endregion
 
 
-#region 异步调用API设计测试
+        #region 异步调用API设计测试
 
         //1.这里测试几种异步API的设计，分别用delegate 异步，multi-thread，ThreadPool
         // Background worker, Timer. 基本的要求是最后的回调函数可以访问 UI resouece，  
@@ -249,7 +249,6 @@ namespace AppTest
         // 2. using BackgroundWorker ， 使用BackgroundWorker的好处是回调可以自由的使用UI资源？why
         ///////////////////////////
 
-
         #region 2. background worker
         // 测试函数
         public void InvokeSheepCountFuncAsync2()
@@ -376,10 +375,8 @@ namespace AppTest
         #endregion
 
         
-       
 
-
-#endregion
+        #endregion
 
 
     }

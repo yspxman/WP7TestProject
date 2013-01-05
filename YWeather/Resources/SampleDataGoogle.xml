@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml_api_reply version="1">
+  <weather module_id="0" tab_id="0" mobile_row="0" mobile_zipped="1" row="0" section="0">
+    <forecast_information>
+      <city data="beijing" />
+      <postal_code data="beijing" />
+      <latitude_e6 data="" />
+      <longitude_e6 data="" />
+      <forecast_date data="2010-10-27" />
+      <current_date_time data="2010-10-27 04:00:00 +0000" />
+      <unit_system data="US" />
+    </forecast_information>
+    <current_conditions>
+      <condition data="Cloudy" />
+      <temp_f data="63" />
+      <temp_c data="17" />
+      <humidity data="Humidity: 94%" />
+      <icon data="/ig/images/weather/cloudy.gif" />
+      <wind_condition data="Wind: NE at 6 mph" />
+    </current_conditions>
+    <forecast_conditions>
+      <day_of_week data="Wed" />
+      <low data="59" />
+      <high data="75" />
+      <icon data="/ig/images/weather/chance_of_storm.gif" />
+      <condition data="Chance of Storm" />
+    </forecast_conditions>
+    <forecast_conditions>
+      <day_of_week data="Thu" />
+      <low data="57" />
+      <high data="82" />
+      <icon data="/ig/images/weather/chance_of_rain.gif" />
+      <condition data="Chance of Rain" />
+    </forecast_conditions>
+    <forecast_conditions>
+      <day_of_week data="Fri" />
+      <low data="57" />
+      <high data="78" />
+      <icon data="/ig/images/weather/chance_of_rain.gif" />
+      <condition data="Chance of Rain" />
+    </forecast_conditions>
+    <forecast_conditions>
+      <day_of_week data="Sat" />
+      <low data="59" />
+      <high data="77" />
+      <icon data="/ig/images/weather/chance_of_storm.gif" />
+      <condition data="Chance of Storm" />
+    </forecast_conditions>
+  </weather>
+</xml_api_reply>

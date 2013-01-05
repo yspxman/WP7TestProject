@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010 Express for Windows Phone
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "AppTest\TestProject.csproj", "{5DA10397-DE11-40F8-A6A4-BB926EAC25CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YWeather", "YWeather\YWeather.csproj", "{917D2E2E-887D-46CB-86DB-C324F8BC25F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{5DA10397-DE11-40F8-A6A4-BB926EAC25CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DA10397-DE11-40F8-A6A4-BB926EAC25CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DA10397-DE11-40F8-A6A4-BB926EAC25CC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{917D2E2E-887D-46CB-86DB-C324F8BC25F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917D2E2E-887D-46CB-86DB-C324F8BC25F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917D2E2E-887D-46CB-86DB-C324F8BC25F6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{917D2E2E-887D-46CB-86DB-C324F8BC25F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917D2E2E-887D-46CB-86DB-C324F8BC25F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917D2E2E-887D-46CB-86DB-C324F8BC25F6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
